@@ -5,14 +5,14 @@ import { LOGO_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-//import { UserContext } from "../utils/UserContext";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
   console.log("Header render");
   const onlineStatus = useOnlineStatus();
 
-  // const loggedinUser = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
 
   useEffect(
     () => {
@@ -22,28 +22,28 @@ const Header = () => {
   );
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-sm">
       <div className="logo-container">
-        <img src={LOGO_URL} alt="Logo" />
+        <img className="w-24 p-4" src={LOGO_URL} alt="Logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4 space-x-4">
+          <li className="px-4">
             Online status: {onlineStatus ? "✅" : "🔴"}
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/">HOME</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/contact">Contact us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
           <button
             className="login"
             onClick={() => {
@@ -54,6 +54,7 @@ const Header = () => {
           >
             {btnNameReact}
           </button>
+          <li className="px-4">{loggedInUser}</li>
         </ul>
       </div>
     </div>
