@@ -21,4 +21,14 @@ const RestaurantCard = (props) =>{
     );
 };
 
+//higher order component
+export const withPromotedValue = (RestaurantCard) =>{
+    return(props)=>{
+    return(<div>
+        <label>Promoted</label>
+        <RestaurantCard {...props}/>   
+    </div>
+    );
+    };
+};
 export default RestaurantCard;

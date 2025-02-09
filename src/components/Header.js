@@ -1,15 +1,19 @@
 import React from "react";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+//import { UserContext } from "../utils/UserContext";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
   console.log("Header render");
   const onlineStatus = useOnlineStatus();
+
+  // const loggedinUser = useContext(UserContext);
+
   useEffect(
     () => {
       console.log("useEffect render");

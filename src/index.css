@@ -1,3 +1,4 @@
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -72,4 +73,13 @@
 .user-card{
    padding: 10px;
    border: 10px solid #f0f0f0;
+}
+
+.item-img{
+  width: 50px;
+  height: 50px;
+  display: flex;
+}
+.category-header{
+  cursor: pointer;
 }

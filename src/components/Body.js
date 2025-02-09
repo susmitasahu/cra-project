@@ -1,5 +1,5 @@
 import React from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{ withPromotedValue } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ const Body = () => {
     const [filteredRestaurant,setFilteredRestaurant] = useState([]);
     const [searchText,setSearchText] = useState("");
 
+    const PromotedRestaurantCard = withPromotedValue(RestaurantCard);
 
     useEffect(() => {
         console.log("useEffect called");//this called 2nd after render element,so api calls inside this
@@ -71,7 +72,11 @@ const Body = () => {
             {filteredRestaurant.map((restaurant) => (
               <Link key={restaurant.card.card.info?.id}
               to ={"/restaurants/"+restaurant.card.card.info?.id}>
-                <RestaurantCard  resData={restaurant} />
+
+                {restaurant.card.card.info?.promoted ?
+                ( <PromotedRestaurantCard resData={restaurant} /> ) :
+               ( <RestaurantCard  resData={restaurant} />)}
+
             </Link>
             ))}
             </div>
