@@ -41,16 +41,18 @@ const Body = () => {
         <div className="body">
             <div className="filter flex">
                 <div className="search m-4 p-4">
-                    <input type="text" className="border-solid border-black" value={searchText}
-                    onChange={(e) =>
-                    {
-                        setSearchText(e.target.value);
-                        const filteredRestaurant = listOfRestaurants.filter(
-                            (res)=>res.card.card.info?.name.toLowerCase().includes(searchText.toLowerCase())
-                        );
-                        setFilteredRestaurant(filteredRestaurant);
-                    }}/>
-                    <button className="px-4 py-4 bg-green-100 m-4 rounded-xl"
+                    <input type="text" 
+                        className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-200" 
+                        value={searchText}
+                        onChange={(e) =>
+                        {
+                            setSearchText(e.target.value);
+                            const filteredRestaurant = listOfRestaurants.filter(
+                                (res)=>res.card.card.info?.name.toLowerCase().includes(searchText.toLowerCase())
+                            );
+                            setFilteredRestaurant(filteredRestaurant);
+                        }}/>
+                    <button className="px-4 py-2 bg-green-100 m-4 rounded-lg hover:bg-green-200 transition-colors"
                      onClick={() =>{
                         console.log(searchText);
 
